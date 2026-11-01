@@ -1,0 +1,6 @@
+httpx==0.24.1
+openai==1.39.0
+feedparser==6.0.11
+newspaper3k==0.2.8
+beautifulsoup4==4.12.3
+lxml_html_clean

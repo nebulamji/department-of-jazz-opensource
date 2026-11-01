@@ -1,0 +1,1 @@
+{"name":"@department-of-jazz/mix-engine","version":"0.1.0","license":"MIT","main":"logic-mcp/server.js","scripts":{"mcp":"node logic-mcp/server.js","ax":"node ax-daemon/daemon.js","suno":"node suno-agent/agent.js"},"dependencies":{"playwright":"^1.40.0"},"description":"Agentic mixing toolkit for Logic Pro."}

@@ -1,0 +1,9 @@
+{
+  "name": "department-of-jazz",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Open tools for jazz musicians, teachers and agents.",
+  "license": "MIT",
+  "workspaces": ["packages/*"],
+  "scripts": { "test": "node --experimental-strip-types --no-warnings --test packages/*/test/*.test.mjs" }
+}

@@ -1,0 +1,1 @@
+{"name":"@department-of-jazz/harmonic-lineage","version":"0.1.0","type":"module","license":"MIT","main":"src/harmonic-lineage.mjs","exports":{".":"./src/harmonic-lineage.mjs","./radio":"./src/radio.mjs"},"description":"Pitch to light, RTTY and JS8-style tone rules. No dependencies."}
