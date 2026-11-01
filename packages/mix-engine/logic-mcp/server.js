@@ -187,7 +187,7 @@ async function appleScript(script) {
 // MCP SERVER PROTOCOL
 // ============================================================
 
-function handleToolCall(toolName, params) {
+async function handleToolCall(toolName, params = {}) {
   const tool = TOOLS[toolName];
   if (!tool) return { error: `Unknown tool: ${toolName}`, available: Object.keys(TOOLS) };
 
@@ -200,7 +200,34 @@ function handleToolCall(toolName, params) {
     }
   }
 
-  return tool.handler(params);
+  const clean = sanitizeParams(params, tool.params || []);
+  if (clean.error) return { error: clean.error, tool: toolName };
+  return tool.handler(clean.value);
+}
+
+// Every parameter ends up inside an AppleScript string. AppleScript can run shell commands
+// (`do shell script`), so inputs are validated, never trusted: numbers must be finite, booleans
+// real booleans, and text is limited to a safe character set and escaped for a string literal.
+const STRING_PARAMS = new Set(['type', 'name', 'identifier', 'newName', 'pluginName', 'format', 'quality']);
+const BOOL_PARAMS = new Set(['bypassed']);
+function sanitizeParams(params, names) {
+  const value = {};
+  for (const n of names) {
+    const v = params[n];
+    if (STRING_PARAMS.has(n)) {
+      if (typeof v !== 'string' || v.length === 0 || v.length > 120 || /[\u0000-\u001f\u007f]/.test(v)) {
+        return { error: `Invalid text param: ${n}` };
+      }
+      value[n] = v.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+    } else if (BOOL_PARAMS.has(n)) {
+      if (typeof v !== 'boolean') return { error: `Invalid boolean param: ${n}` };
+      value[n] = v;
+    } else {
+      if (typeof v !== 'number' || !Number.isFinite(v)) return { error: `Invalid number param: ${n}` };
+      value[n] = v;
+    }
+  }
+  return { value };
 }
 
 function listTools() {
@@ -240,6 +267,7 @@ module.exports = {
   handleToolCall,
   listTools,
   appleScript,
+  sanitizeParams,
   emitToActivityStream,
 };
 
