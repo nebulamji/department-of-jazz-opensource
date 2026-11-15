@@ -1,0 +1,104 @@
+{
+  "schema": "theater-source-index.v1",
+  "verifiedAs": "GitHub read-level source review (not a live deployment check)",
+  "status": "requires pinned commit SHA in fresh local build",
+  "sources": [
+    {
+      "repo": "nebulamji/department-of-jazz-show",
+      "files": [
+        "story/SCHEMA.md",
+        "pipeline/graph_api.py",
+        "pipeline/room_to_graph.py",
+        "pipeline/WORKERS.md",
+        "pipeline/attested_run.py"
+      ],
+      "use": "canon, attribution, manifests and bounded worker conventions",
+      "reuse": "private adapter only"
+    },
+    {
+      "repo": "nebulamji/srida",
+      "files": [
+        "RT-DISCORD.md",
+        "convex/schema.ts",
+        "convex/a2a.ts"
+      ],
+      "use": "Discord work organization and A2A routing",
+      "knownIssue": "a2a.ts route accepts duplicate IDs, ACK needs authenticated recipient verification; do not drop into production verbatim"
+    },
+    {
+      "repo": "nebulamji/jazzcats",
+      "files": [
+        "contracts/src/JazzCatsGenesisRoles.sol",
+        "shared/game/play-permit.mjs",
+        "server/maintained-task-authority.mjs"
+      ],
+      "use": "mint roles and expiring onchain permissions",
+      "knownIssue": "rehearsal and HOLD status, no automatic right to reuse collection"
+    },
+    {
+      "repo": "nebulamji/onchainartofficial",
+      "files": [
+        "AGENTS.md",
+        "docs/ARCHITECTURE-AND-INVARIANTS.md",
+        "src/artist.mjs",
+        "src/ledger.mjs"
+      ],
+      "use": "separate autonomous artist lane, provenance and publication economics",
+      "knownIssue": "artist agent is NOT human-directed; not a live artist market"
+    },
+    {
+      "repo": "nebulamji/rida-workspaces",
+      "files": [
+        "README.md"
+      ],
+      "use": "tenant-bound buyer and agent workspace boundaries"
+    },
+    {
+      "repo": "nebulamji/companyos-edge",
+      "files": [
+        "README.md",
+        "src/agentRuntime.ts",
+        "src/temporalLedger.ts"
+      ],
+      "use": "scoped work/receipts and enterprise isolation"
+    },
+    {
+      "repo": "nebulamji/envoy",
+      "files": [
+        "README.md"
+      ],
+      "use": "agent provider, metered API and external-send authorization patterns"
+    },
+    {
+      "repo": "nebulamji/client0-control-plane",
+      "files": [
+        "initiatives/covenant-rail/contracts/src/SwarmJobs.sol",
+        "initiatives/covenant-rail/swimmers/README.md"
+      ],
+      "use": "independent worker/checker and NFT transfer-bound authority, future opt-in economic adapter"
+    },
+    {
+      "repo": "nebulamji/frontier",
+      "files": [
+        "README.md",
+        "AGENTS.md"
+      ],
+      "use": "build evaluation and explicit writeback approvals"
+    },
+    {
+      "repo": "nebulamji/pianonymity-art-machine",
+      "files": [
+        "README.md"
+      ],
+      "use": "rights-aware generative asset workflow"
+    },
+    {
+      "repo": "nebulamji/department-of-jazz-opensource",
+      "files": [
+        "packages/community-theater/src/core.mjs",
+        "packages/community-theater/src/bridge.mjs"
+      ],
+      "use": "current executable prototype"
+    }
+  ]
+}

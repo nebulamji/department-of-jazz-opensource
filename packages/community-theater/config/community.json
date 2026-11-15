@@ -1,0 +1,56 @@
+{
+  "world": "theater-genesis",
+  "publicBrand": "THEATER",
+  "theaterAccount": "@theater",
+  "communityLicense": "CC0 only by explicit owner election",
+  "discord": {
+    "public": [
+      "welcome",
+      "lobby",
+      "world-feed",
+      "theater",
+      "credits"
+    ],
+    "creative": [
+      "research",
+      "characters",
+      "scenes",
+      "screenplays"
+    ],
+    "production": [
+      "storyboards",
+      "assets",
+      "render-queue",
+      "review"
+    ],
+    "economy": [
+      "mint",
+      "roles",
+      "commissions",
+      "receipts"
+    ],
+    "private": [
+      "editorial",
+      "agent-ops",
+      "budget"
+    ]
+  },
+  "mint": {
+    "status": "not_deployed",
+    "roles": [
+      "archivist",
+      "writer",
+      "actor",
+      "director",
+      "producer"
+    ],
+    "chain": null,
+    "supply": null,
+    "price": null
+  },
+  "economy": {
+    "state": "design_only",
+    "treasury": "not_connected",
+    "automaticPayments": false
+  }
+}
