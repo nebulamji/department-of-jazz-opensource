@@ -1,0 +1,10 @@
+import{CinemaWorld,digest}from'./core.mjs';
+const w=new CinemaWorld({id:'theater-genesis'});
+const a=w.contribute({actor:'guest-1',text:'The abandoned cinema has a projectionist who remembers films that never existed.',consent:true});
+const b=w.contribute({actor:'guest-2',text:'The screen is a window onto a city that has not been built yet.',consent:true});
+const p=w.propose({actor:'writer-1',role:'writer',title:'The Last Projectionist',description:'An impossible cinema dreams up its own city.',sources:[a.id,b.id]});
+const c=w.approve({actor:'director-1',role:'director',proposalId:p.id});
+const job=w.program({actor:'director-1',role:'director',canonId:c.id});
+w.claim({worker:'worker-1',jobId:job.id,capabilities:['cinema.render']});
+w.deliver({worker:'worker-1',jobId:job.id,artifactHash:digest('demo-only-no-video'),artifactURI:'demo://not-a-render'});
+console.log(JSON.stringify(w.packet(),null,2));
