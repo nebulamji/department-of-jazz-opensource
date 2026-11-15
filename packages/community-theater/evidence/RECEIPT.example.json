@@ -1,0 +1,32 @@
+{
+  "schema": "theater-build-receipt.v1",
+  "status": "NOT_RUN",
+  "sourceCommit": null,
+  "sourceLocks": [],
+  "test": {
+    "command": "npm test",
+    "executed": false,
+    "pass": null,
+    "logsDigest": null
+  },
+  "demo": {
+    "command": "npm run demo",
+    "executed": false
+  },
+  "runtime": {
+    "discord": false,
+    "walletVerification": false,
+    "convex": false,
+    "videoRender": false,
+    "published": false,
+    "mint": false,
+    "paid": false
+  },
+  "blockers": [
+    "Set up new authorized Discord test application and guild",
+    "Provide private integration workspace with read-only access to source repos",
+    "Select licensed film assets and render worker",
+    "Verify NFT roles on Base and obtain owner approval before live contracts or social publication"
+  ],
+  "createdBy": "GitHub source scaffold; no test execution claimed"
+}
