@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import{A2AInbox,validateEnvelope}from'../src/bridge.mjs';
+const env={worldId:'w',workId:'1',attempt:1,from:'director',to:'render-1',capability:'cinema.render',inputDigest:'a'.repeat(64),budgetLimit:0,leaseUntil:Date.now()+60000};
+test('A2A deduplicates identical deliveries and enforces recipient',()=>{const i=new A2AInbox();assert.equal(i.accept(env).duplicate,false);assert.equal(i.accept(env).duplicate,true);assert.throws(()=>i.ack('w:1:1','attacker'),/ack_denied/);assert.equal(i.ack('w:1:1','render-1').state,'acked');});
+test('rejects arbitrary capabilities and malformed work',()=>{assert.throws(()=>validateEnvelope({...env,capability:'shell.exec'}),/unapproved/);assert.throws(()=>validateEnvelope({...env,budgetLimit:-1}),/invalid_limits/);});
